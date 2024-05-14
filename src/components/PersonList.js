@@ -3,7 +3,24 @@ import axios from 'axios';
 
 export default class PersonList extends React.Component {
   state = {
-    persons: []
+    persons: [
+      {
+        name: Allison,
+        id: 1,
+      },
+      {
+        name: Alex,
+        id: 2,
+      },
+      {
+        name: Albert,
+        id: 3,
+      },
+      {
+        name: BElanna,
+        id: 4,
+      }
+    ]
   }
 
   componentDidMount() {
