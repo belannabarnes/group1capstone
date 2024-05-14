@@ -5,19 +5,19 @@ export default class PersonList extends React.Component {
   state = {
     persons: [
       {
-        name: Allison,
+        name: "Allison",
         id: 1,
       },
       {
-        name: Alex,
+        name: "Alex",
         id: 2,
       },
       {
-        name: Albert,
+        name: "Albert",
         id: 3,
       },
       {
-        name: BElanna,
+        name: "B'Elanna",
         id: 4,
       }
     ]
