@@ -1,14 +1,24 @@
 version: 0.2
 phases:
   install:
+    runtime-versions:
+      terraform: 1.1.0
     commands:
       - echo install step...
+      - echo "Installing Terraform"
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
+      - unzip terraform.zip
+      - chmod +x terraform
+      - mv terraform /usr/local/bin/
   pre_build:
     commands:
       - echo logging in to AWS ECR...
       - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962804699607.dkr.ecr.us-west-2.amazonaws.com
   build:
     commands:
+      - echo "Building infrastructure with Terraform"
+      - terraform init
+      - terraform apply --auto-approve
       - echo build Docker image on `date`
       - docker build -t group1repo:latest .
       - docker tag group1repo:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest
