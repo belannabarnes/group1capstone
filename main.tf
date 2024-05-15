@@ -284,7 +284,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
       "Action": [
         "codestar-connections:UseConnection"
       ],
-      "Resource": "${aws_codestarconnections_connection.group1-tf-cp2-connection.id}"
+      "Resource": "${aws_codestarconnections_connection.group1-tf-cp2-connection.arn}"
     },
     {
       "Effect": "Allow",
@@ -304,7 +304,6 @@ EOF
 resource "aws_codestarconnections_connection" "group1-tf-cp2-connection" {
   name          = "group1-tf-cp2-cs-connection"
   provider_type = "GitHub"
-  arn =
 }
 
 
