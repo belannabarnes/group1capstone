@@ -7,7 +7,7 @@ terraform {
   } 
   backend "s3" {
     bucket = "group1-tf-cp2-bucket"
-    key    = "state"
+    key    = "state/remote-state/terraform.tfstate"
     region = "us-west-2"
   }
   required_version = ">= 1.1.0"
