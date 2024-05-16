@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 resource "aws_ecs_cluster" "group1-tf-cp2-cluster" {
-  name = "group1-tf-cp2-cluster" # Naming the cluster
+  name = "group1-tf-cp2-cluster"
 }
 
 resource "aws_ecr_repository" "group1-tf-cp2-ecr-repo" {
@@ -168,6 +168,7 @@ resource "aws_s3_bucket_versioning" "group1-tf-cp2-bucket-verison" {
     status = "Enabled"
   }
 }
+
 
 resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
   role       = "${aws_iam_role.ecsTaskExecutionRole.name}"
