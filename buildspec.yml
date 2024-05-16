@@ -4,10 +4,10 @@ phases:
     commands:
       - echo install step...
       - echo "Installing Terraform"
-      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
-      - unzip terraform.zip
-      - chmod +x terraform
-      - mv terraform /usr/local/bin/
+      #- curl -o terraform.zip https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip
+      #- unzip terraform.zip
+      #- chmod +x terraform
+      #- mv terraform /usr/local/bin/
   pre_build:
     commands:
       - echo logging in to AWS ECR...
@@ -15,8 +15,8 @@ phases:
   build:
     commands:
       - echo "Building infrastructure with Terraform"
-      - terraform init
-      - terraform apply --auto-approve
+      #- terraform init
+      #- terraform apply --auto-approve
       - echo build Docker image on `date`
       - docker build -t group1repo:latest .
       - docker tag group1repo:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest
@@ -25,6 +25,6 @@ phases:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
       - docker push 962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest
-      - printf '[{"name":"group1-cap2-cluster","imageUri":"962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest"}]' > imagedefinitions.json
+      #- printf '[{"name":"group1-cap2-cluster","imageUri":"962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest"}]' > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
