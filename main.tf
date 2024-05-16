@@ -9,18 +9,12 @@ terraform {
     bucket = "group1-tf-cp2-bucket"
     key    = "state"
     region = "us-west-2"
-    assume_role = {
-      role_arn = "arn:aws:iam::PRODUCTION-ACCOUNT-ID:role/Terraform"
-    }
   }
   required_version = ">= 1.1.0"
 }
 
 provider "aws" {
   region     = "us-west-2"
-    assume_role = {
-      role_arn = "arn:aws:iam::PRODUCTION-ACCOUNT-ID:role/Terraform"
-    }
 }
 
 resource "aws_ecs_cluster" "group1-tf-cp2-cluster" {
