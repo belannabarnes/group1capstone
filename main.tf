@@ -4,6 +4,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.16"
     }
+  } 
+  backend "s3" {
+    bucket = "group1-tf-cp2-bucket"
+    key    = "state/remote-state"
+    region = "us-west-2"
   }
   required_version = ">= 1.1.0"
 }
@@ -173,6 +178,9 @@ resource "aws_s3_bucket_versioning" "group1-tf-cp2-bucket-verison" {
 resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
   role       = "${aws_iam_role.ecsTaskExecutionRole.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  lifecycle {
+    ignore_changes = true
+  }
 }
 
 
