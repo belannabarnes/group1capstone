@@ -16,7 +16,7 @@ phases:
     commands:
       - echo "Building infrastructure with Terraform"
       - terraform init
-      #- terraform apply --auto-approve
+      - terraform apply --auto-approve
       - echo build Docker image on `date`
       - docker build -t group1repo:latest .
       - docker tag group1repo:latest 962804699607.dkr.ecr.us-west-2.amazonaws.com/group1repo:latest
