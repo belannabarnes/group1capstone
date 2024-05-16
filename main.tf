@@ -12,6 +12,7 @@ provider "aws" {
   region     = "us-west-2"
 }
 
+
 /* ------- S3 Bucket ------ */
 resource "aws_s3_bucket" "group1-tf-cp2-bucket-create" {
   bucket = "group1-tf-cp2-bucket"
